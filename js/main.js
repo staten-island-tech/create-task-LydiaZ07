@@ -15,11 +15,18 @@ console.log("HI");
 DOMSelectors.btn.addEventListener("click", function(e) {
   e.preventDefault();
     console.log(getRandomInt(1,101));
+    const hello = getRandomInt(1,101).innerHTML;
+console.log(hello)}); 
 
-}); 
+
+
+
+
+
 
 function displayQuote(data){
   DOMSelectors.display.innerHTML = "";
+  // const numB = getRandomInt(1,101);
   DOMSelectors.display.insertAdjacentHTML(
       "afterbegin", `<div class="output">
       <p>#${data.quote}</p>
@@ -27,24 +34,6 @@ function displayQuote(data){
   );
 }    
 
-async function getData(num){
-    
-  try {
-      const response = await fetch(`https://api.goprogram.ai/inspiration${num}`);
-      if(response.status < 200 || response.status >299){
-          console.log(response.status);
-          throw new error(response);
-      } else{
-          const data = await response.json();
-
-      console.log(data);
-     displayQuote(data); 
-  };
-  } catch (error) {
-      console.log(error);
-      alert("ERROR! Please try again.");
-     
-  }};
 
 
 
