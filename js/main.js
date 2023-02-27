@@ -15,38 +15,29 @@ console.log("HI");
 DOMSelectors.btn.addEventListener("click", function(e) {
   e.preventDefault();
     console.log(getRandomInt(1,101));
-DOMSelectors.display.innerHTML = getRandomInt(1,101);
-getData(display);
-displayQuote();
-    }); 
+    const hello = getRandomInt(1,101).innerHTML;
+console.log(hello)}); 
 
 
-    function displayQuote(data){
-      DOMSelectors.display.innerHTML = "";
-      DOMSelectors.display.insertAdjacentHTML(
-          "afterbegin", `<div class="output">
-          <p>#${data.slip.id}</p>
-          <p>"${data.slip.advice}"</p></div>`
-      );
-  }    
-  
-  async function getData(num){
-      
-      try {
-          const response = await fetch(`https://api.adviceslip.com/advice/${num}`);
-          if(response.status < 200 || response.status >299){
-              console.log(response.status);
-              throw new error(response);
-          } else{
-              const data = await response.json();
-  
-          console.log(data);
-         displayQuote(data); 
-      };
-      } catch (error) {
-          console.log(error);
-          alert("ERROR! Please try again.");
-         
-      }};
-   
 
+
+
+
+
+function displayQuote(data){
+  DOMSelectors.display.innerHTML = "";
+  // const numB = getRandomInt(1,101);
+  DOMSelectors.display.insertAdjacentHTML(
+      "afterbegin", `<div class="output">
+      <p>#${data.quote}</p>
+      <p>"${data.author}"</p></div>`
+  );
+}    
+
+
+
+
+// function generateNum(){
+//   DOMSelectors.display.insertAdjacentElement(`beforeend`, `<div>You have generated the number:</div>`)
+// };
+// console.log(generateNum());
