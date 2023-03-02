@@ -22,6 +22,7 @@ const dis = DOMSelectors.display.value;
     console.log(dis);
     getData(dis);
     DOMSelectors.display.value = "";
+    
 }); 
 
 
@@ -55,9 +56,10 @@ const dis = DOMSelectors.display.value;
  
 function displayQuote(data){
   DOMSelectors.display.innerHTML = "";
+  console.log(data[0].url);
   DOMSelectors.display.insertAdjacentHTML(
       "afterbegin", `<div class="output">
-      <img src="${data.url}"></div>`
+      <img src="${data[0].url}"></div>` //(0) means the first item in the array 
   );
 };
 
