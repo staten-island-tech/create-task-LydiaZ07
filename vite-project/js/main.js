@@ -2,7 +2,6 @@ import { DOMSelectors } from "./DOM";
 import "../styles/styles.css";
 console.log("HI");
 
-const number = getRandomInt(1,101);
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);//rounds up to min, inclusive
@@ -15,23 +14,22 @@ function getRandomInt(min, max) {
 //https://zenquotes.io/api/quotes motivational/inspirational quote gen api 
 
 DOMSelectors.btn.addEventListener("click", function(e) {
+  const number = getRandomInt(1,101);
+
   e.preventDefault();
     console.log(number);
     // const hello = getRandomInt(1,101).innerHTML;
-DOMSelectors.numb.innerHTML = getRandomInt(1,101);
+DOMSelectors.numb.innerHTML = number;
 // const dis = DOMSelectors.display.value;
-     ifelse();
+     ifelse(number);
     DOMSelectors.display.value = "";
     
 }); 
 
 
 
-
-
 //if the random number generated is even, then "Hi" will log be logged, if odd, then "bye" will be logged
-  function ifelse(){
-    const number = getRandomInt(1,101);
+  function ifelse(number){
     const remainder = (number % 2);
 
     if (remainder == 0 ) {
