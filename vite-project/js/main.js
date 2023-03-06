@@ -2,7 +2,9 @@ import { DOMSelectors } from "./DOM";
 import "../styles/styles.css";
 console.log("HI");
 
- function getRandomInt(min, max) {
+const number = getRandomInt(1,101);
+
+function getRandomInt(min, max) {
   min = Math.ceil(min);//rounds up to min, inclusive
   max = Math.floor(max);//rounds to lower number, exclusive 
   return Math.floor(Math.random() * (max - min) + min); 
@@ -14,59 +16,72 @@ console.log("HI");
 
 DOMSelectors.btn.addEventListener("click", function(e) {
   e.preventDefault();
-    console.log(getRandomInt(-20,20));
-    const hello = getRandomInt(-20,20).innerHTML;
-console.log(hello);
-DOMSelectors.numb.innerHTML = getRandomInt(-10,10);
-const dis = DOMSelectors.display.value;
-    console.log(dis);
-    getData(dis);
+    console.log(number);
+    // const hello = getRandomInt(1,101).innerHTML;
+DOMSelectors.numb.innerHTML = getRandomInt(1,101);
+// const dis = DOMSelectors.display.value;
+     ifelse();
     DOMSelectors.display.value = "";
     
 }); 
 
 
-// function displayQuote(data){
-//   DOMSelectors.display.innerHTML = "";
-//   DOMSelectors.display.insertAdjacentHTML(
-//       "afterbegin", `<div class="output">
-//       <p>"${data.slip.advice}"</p></div>`
-//   );
-// };
 
-// async function getData(){
-  
-//   try {
-//       const response = await fetch(`https://api.adviceslip.com/advice/${getRandomInt(1,225)}`);
-//       if(response.status < 200 || response.status >299){
-//           console.log(response.status);
-//           throw new error(response);
-//       } else{
-//           const data = await response.json();
 
-//       console.log(data);
-//      displayQuote(data); 
-//   };
-//   } catch (error) {
-//       console.log(error);
-//       alert("ERROR! Please try again.");
-     
-//   }};
 
- 
+//if the random number generated is even, then "Hi" will log be logged, if odd, then "bye" will be logged
+  function ifelse(){
+    const number = getRandomInt(1,101);
+    const remainder = (number % 2);
+
+    if (remainder == 0 ) {
+      console.log(" Even");
+
+      function displayImg(data){
+        DOMSelectors.display.innerHTML = "";
+        // console.log(data[0].url);
+        DOMSelectors.display.insertAdjacentHTML(
+            "afterbegin", `<div class="output">
+            <img src="${data[0].url}"></div>` //(0) means the first item in the array 
+        );
+      };
+      getData2();
+
+      async function getData2(){
+        
+        try {
+            const response = await fetch(`https://api.thecatapi.com/v1/images/search`);
+            if(response.status < 200 || response.status >299){
+                console.log(response.status);
+                throw new error(response);
+            } else{
+                const data = await response.json();
+      
+            console.log(data);
+           displayImg(data); 
+        };
+        } catch (error) {
+            console.log(error);
+            alert("ERROR! Please try again.");
+           
+        }};
+    } else {
+      console.log("odd");
+
 function displayQuote(data){
   DOMSelectors.display.innerHTML = "";
-  console.log(data[0].url);
   DOMSelectors.display.insertAdjacentHTML(
       "afterbegin", `<div class="output">
-      <img src="${data[0].url}"></div>` //(0) means the first item in the array 
+      <p>"${data.slip.advice}"</p></div>`
   );
-};
 
+};
+getData();
 async function getData(){
   
   try {
-      const response = await fetch(`https://api.thecatapi.com/v1/images/search`);
+      const response = await fetch(`https://api.adviceslip.com/advice/${number}`);
+      console.log(number);
       if(response.status < 200 || response.status >299){
           console.log(response.status);
           throw new error(response);
@@ -81,6 +96,10 @@ async function getData(){
       alert("ERROR! Please try again.");
      
   }};
+
+ 
+    };};
+  
 
 
 
