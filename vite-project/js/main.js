@@ -2,7 +2,8 @@ import { DOMSelectors } from "./DOM";
 import "../styles/styles.css";
 console.log("HI");
 
-
+const img = [];
+const text = [];
 function getRandomInt(min, max) {
   min = Math.ceil(min);//rounds up to min, inclusive
   max = Math.floor(max);//rounds to lower number, exclusive 
@@ -18,13 +19,46 @@ DOMSelectors.btn.addEventListener("click", function(e) {
 
   e.preventDefault();
     console.log(number);
-    // const hello = getRandomInt(1,101).innerHTML;
 DOMSelectors.numb.innerHTML = number;
-// const dis = DOMSelectors.display.value;
      ifelse(number);
     DOMSelectors.display.value = "";
     
 }); 
+
+DOMSelectors.btn2.addEventListener("click", function(e){
+    e.preventDefault();
+img.forEach(e => DOMSelectors.his.insertAdjacentHTML(`beforeend`, `<img  class="imgs" src="${e[0].url}">`)
+);
+
+DOMSelectors.btn4.addEventListener("click", function(e){
+  e.preventDefault();
+  toClearImg();});
+//console.log(e)
+});
+
+DOMSelectors.btn5.addEventListener("click", function(e){
+  e.preventDefault();
+  toClearText();
+});
+
+
+function toClearImg(){
+  his.innerHTML = "";
+};
+
+function toClearText(){
+  his2.innerHTML = "";
+};
+
+DOMSelectors.btn3.addEventListener("click", function(e){
+  e.preventDefault();
+text.forEach(el => DOMSelectors.his2.insertAdjacentHTML(`beforeend`, `<p class="texts" >${el.slip.advice}<p>`)
+);
+// console.log(el);
+});
+
+//DOMSelectors.his.insertAdjacentHTML(`beforeend`, `<img src="${img[0].url}">`));
+
 
 
 
@@ -33,14 +67,14 @@ DOMSelectors.numb.innerHTML = number;
     const remainder = (number % 2);
 
     if (remainder == 0 ) {
-      console.log(" Even");
+      console.log("Even");
 
       function displayImg(data){
         DOMSelectors.display.innerHTML = "";
         // console.log(data[0].url);
         DOMSelectors.display.insertAdjacentHTML(
             "afterbegin", `<div class="output">
-            <img src="${data[0].url}"></div>` //(0) means the first item in the array 
+            <img class="mainimg" src="${data[0].url}"></div>` //(0) means the first item in the array 
         );
       };
       getData2();
@@ -54,6 +88,8 @@ DOMSelectors.numb.innerHTML = number;
                 throw new error(response);
             } else{
                 const data = await response.json();
+                img.push(data);
+
       
             console.log(data);
            displayImg(data); 
@@ -70,7 +106,7 @@ function displayQuote(data){
   DOMSelectors.display.innerHTML = "";
   DOMSelectors.display.insertAdjacentHTML(
       "afterbegin", `<div class="output">
-      <p>"${data.slip.advice}"</p></div>`
+      <p class= "maintext" >"${data.slip.advice}"</p></div>`
   );
 
 };
@@ -85,6 +121,8 @@ async function getData(){
           throw new error(response);
       } else{
           const data = await response.json();
+          text.push(data);
+
 
       console.log(data);
      displayQuote(data); 

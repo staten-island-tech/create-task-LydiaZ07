@@ -11,9 +11,47 @@ body,
 
 #main {
     margin-top: 2rem;
+    font-size: 4rem;
 }
 
 #btn {
     padding: 1rem;
+    margin: 2rem;
+}
+
+#his {
+    float: left;
+}
+
+#his2 {
+    float: right;
+}
+
+.mainimg {
+    width: 25rem;
+    margin-bottom: 3rem;
+}
+
+.maintext {
+    margin: 2rem;
+}
+
+
+.imgs {
+    width: 10rem;
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: center;
+    margin-left: 20rem;
+}
+
+.texts {
+    margin: 2rem;
+    justify-content: center;
+    margin-right: 10rem;
+    margin-top: 5rem;
+}
+
+#clears {
     margin: 2rem;
 }
